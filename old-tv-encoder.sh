@@ -107,9 +107,9 @@ do
 		fi
 		
 		if [ $addSubs == true ] ; then
-			xterm -e mencoder "${inputsArray[$i]}" -ovc xvid -xvidencopts pass=1:bitrate=3000 -oac mp3lame -sub "${subsArray[$i]}" -font "/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf" -subfont-autoscale 2 -vf scale -zoom -xy 640 -o "$destination.tv.avi"
+			xterm -e mencoder "${inputsArray[$i]}" -ovc xvid -xvidencopts pass=1:bitrate=3000:threads=$(nproc) -oac mp3lame -sub "${subsArray[$i]}" -font "/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf" -subfont-autoscale 2 -vf scale -zoom -xy 640 -o "$destination.tv.avi"
 		else
-			xterm -e mencoder "${inputsArray[$i]}" -ovc xvid -xvidencopts pass=1:bitrate=3000 -oac mp3lame -vf scale -zoom -xy 640 -o "$destination.tv.avi"
+			xterm -e mencoder "${inputsArray[$i]}" -ovc xvid -xvidencopts pass=1:bitrate=3000:threads=$(nproc) -oac mp3lame -vf scale -zoom -xy 640 -o "$destination.tv.avi"
 		fi
 done
 
